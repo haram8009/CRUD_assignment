@@ -2,7 +2,9 @@
 
 <form method="POST" action="{% url 'update' edit_blog.id %}">
   {% csrf_token %}
-  <input type="text" name="title" value="{{edit_blog.title}}"></input>
-  <textarea name="content" id="" cols="30">{{edit_blog.content}}</textarea>
+  제목 :
+  <input type="text" name="title"/>
+  본문 :
+  <textarea name="content" id="" cols="30" rows="10"></textarea>
   <input type="submit" value="수정하기"/>
 </form>

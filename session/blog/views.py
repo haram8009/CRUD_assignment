@@ -35,3 +35,9 @@ def update(request, blog_id):
     old_blog.content = request.POST['content']
     old_blog.save()
     return redirect('detail', old_blog.id)
+
+
+def delete(request, blog_id):
+    delete_blog = get_object_or_404(Blog, pk=blog_id)
+    delete_blog.delete()
+    return redirect('home')
