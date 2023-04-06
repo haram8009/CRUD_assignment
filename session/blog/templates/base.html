@@ -23,14 +23,18 @@
       <div class="search-box">
         <form class="search-box" action="{% url 'search' %}" method="GET">
           <input class="search-bar" type="text" placeholder="검색어 입력" name="search"/>
-          <button type="submit">검색하기</button>
+          <button type="submit">🔍</button>
         </form>
       </div>
     </header>
     <hr/>
-    {% block content %}{% endblock content %}
-    <hr/>
-    <footer></footer>
+    <main>
+      {% block content %}{% endblock content %}
+      <hr/>
+    </main>
+    <footer>
+      © 2023. HARAM all rights reserved
+    </footer>
   </body>
 
 </html>

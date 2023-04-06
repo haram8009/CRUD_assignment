@@ -13,24 +13,29 @@
     </a>
     <div class="article-container">
       {% for blog in page_obj %}
-        <article>
-          <a href="{%url 'detail' blog.id %}">
+        <a href="{%url 'detail' blog.id %}">
+
+          <article>
             <h2>{{blog.title}}</h2>
             {% if blog.image %}
               <img width="100px" src="{{blog.image.url}}"/>
             {% endif %}
             <p class="blog_summary">{{blog.summary}}</p>
-            <p>{{blog.created_at}}</p>
-          </a>
-        </article>
+            <p class="blog_createdat">{{blog.created_at}}</p>
+          </article>
+        </a>
       {% endfor %}
     </div>
 
     <div>
       <span>
         {% if page_obj.has_previous %}
-          <a href="?page=1">처음으로</a>
-          <a href="?page={{page_obj.previous_page_number}}">이전</a>
+          <a href="?page=1">
+            <button>처음으로</button>
+          </a>
+          <a href="?page={{page_obj.previous_page_number}}">
+            <button>이전</button>
+          </a>
         {% endif %}
       </span>
 
@@ -44,8 +49,12 @@
 
       <span>
         {% if page_obj.has_next %}
-          <a href="?page={{page_obj.next_page_number}}">다음</a>
-          <a href="?page={{page_obj.paginator.num_pages}}">마지막으로</a>
+          <a href="?page={{page_obj.next_page_number}}">
+            <button>다음</button>
+          </a>
+          <a href="?page={{page_obj.paginator.num_pages}}">
+            <button>마지막으로</button>
+          </a>
         {% endif %}
       </span>
     </div>

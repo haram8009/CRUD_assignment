@@ -1,42 +1,71 @@
 html {
   text-align: center;
+  min-width: 400px;
 }
 header {
   display: block;
   width: 100%;
 }
+footer {
+  height: 30px;
+  color: gray;
+}
+button,
+input[type="file"]::file-selector-button {
+  border: 1px solid gray;
+  border-radius: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+button:hover,
+input[type="file"]::file-selector-button:hover {
+  box-shadow: 2px 2px 2px gray;
+}
 .content {
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
-}
-.article-container {
-  width: 600px;
+  gap: 8px;
 }
 a,
 a:link,
 a:visited {
-  cursor: pointer;
   color: #000;
   text-decoration: none;
+  cursor: pointer;
 }
 .article-container {
   display: flex;
-  flex-direction: column;
+  min-width: 400px;
   text-align: left;
+  flex-direction: column;
   gap: 5px;
+  box-sizing: border-box;
+}
+.article-container:last-child article {
+  border: none;
 }
 article {
-  border: 1px solid gray;
-  border-radius: 20px;
+  width: 100%;
   padding: 20px 40px;
+  border-bottom: 1px solid gray;
+  box-sizing: border-box;
   overflow: hidden;
 }
 article img {
-  float: left;
+  float: right;
   margin-right: 20px;
 }
 .blog_summary {
+  word-wrap: break-word;
+}
+.blog_createdat {
   color: gray;
+  font-size: smaller;
+}
+.blog_detail_content {
+  min-width: 400px;
+  text-align: left;
+  min-height: 400px;
 }
