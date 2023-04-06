@@ -1,12 +1,11 @@
-<h1>편집 페이지입니다.</h1>
+<h1>edit 페이지</h1>
 
 <form method="POST" action="{% url 'update' edit_blog.id %}">
-  {% csrf_token %}
-  제목 :
-  <input type="text" name="title" value="{{edit_blog.title}}"/>
-  본문 :
-  <textarea name="content" id="" cols="30" rows="10">{{edit_blog.content}}</textarea>
-  <input type="submit" value="수정하기"/>
+    {% csrf_token %}
+    <input type="text" name="title" value="{{edit_blog.title}}"/>
+    <textarea name="content" id="" cols="30">{{edit_blog.content}}</textarea>
+    <input type="submit" value="수정하기">
 </form>
 
-<a href="{%url 'home' %}">홈으로가기</a>
+<a href="{% url 'home' %}">홈</a>
+<a href="{% url 'delete' edit_blog.id %}">삭제하기</a>
