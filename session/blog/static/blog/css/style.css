@@ -1,4 +1,42 @@
 html {
-  /* color: rgb(255, 186, 223); */
   text-align: center;
+}
+header {
+  display: block;
+  width: 100%;
+}
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.article-container {
+  width: 600px;
+}
+a,
+a:link,
+a:visited {
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+}
+.article-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 5px;
+}
+article {
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 20px 40px;
+  overflow: hidden;
+}
+article img {
+  float: left;
+  margin-right: 20px;
+}
+.blog_summary {
+  color: gray;
 }

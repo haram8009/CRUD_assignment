@@ -1,43 +1,53 @@
 {% extends 'base.html' %}
 {%load static%}
 
-{% block title %}블로그 홈페이지{% endblock title %}
+{% block title %}Blog Home{% endblock title %}
 
-{% block extrahead %}
-  <link rel="stylesheet" href="{% static 'blog/css/style.css'%}"/>
-{% endblock extrahead %}
+{% block extrahead %}{% endblock extrahead %}
 
 {% block content %}
-  <h1>LIKELION 11 Blog Project</h1>
-  <img width="100px" src="{% static 'blog/img/pinkie-clap.gif'%}" alt="이모티콘">
-  <a href="{% url 'new' %}">새 글 작성하기</a>
-  <div>
-    {% for blog in page_obj %}
-      <a href="{%url 'detail' blog.id %}">
-        <h2>{{blog.title}}</h2>
-        <p>{{blog.summary}}</p>
-        <p>{{blog.created_at}}</p>
-      </a>
-    {% endfor %}
-  </div>
+  <div class="content">
+    <h3>전체 글 ({{blog_count}})</h3>
+    <a href="{% url 'new' %}">
+      <button>새 글 작성하기</button>
+    </a>
+    <div class="article-container">
+      {% for blog in page_obj %}
+        <article>
+          <a href="{%url 'detail' blog.id %}">
+            <h2>{{blog.title}}</h2>
+            {% if blog.image %}
+              <img width="100px" src="{{blog.image.url}}"/>
+            {% endif %}
+            <p class="blog_summary">{{blog.summary}}</p>
+            <p>{{blog.created_at}}</p>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
 
-  <span>
-    {% if page_obj.has_previous %}
-      <a href="?page=1">처음으로</a>
-      <a href="?page={{page_obj.previous_page_number}}">이전</a>
-    {% endif %}
-
-    <span>
-      <span>{{page_obj.number}}</span>
+    <div>
       <span>
-        /
+        {% if page_obj.has_previous %}
+          <a href="?page=1">처음으로</a>
+          <a href="?page={{page_obj.previous_page_number}}">이전</a>
+        {% endif %}
       </span>
-      <span>{{page_obj.paginator.num_pages}}</span>
-    </span>
 
-    {% if page_obj.has_next %}
-      <a href="?page={{page_obj.next_page_number}}">다음</a>
-      <a href="?page={{page_obj.paginator.num_pages}}">마지막으로</a>
-    {% endif %}
-  </span>
+      <span>
+        <span>{{page_obj.number}}</span>
+        <span>
+          /
+        </span>
+        <span>{{page_obj.paginator.num_pages}}</span>
+      </span>
+
+      <span>
+        {% if page_obj.has_next %}
+          <a href="?page={{page_obj.next_page_number}}">다음</a>
+          <a href="?page={{page_obj.paginator.num_pages}}">마지막으로</a>
+        {% endif %}
+      </span>
+    </div>
+  </div>
 {% endblock content %}
