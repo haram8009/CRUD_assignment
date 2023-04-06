@@ -46,7 +46,6 @@ def update(request, blog_id):
     old_blog = get_object_or_404(Blog, pk=blog_id)
     old_blog.title = request.POST.get("title")
     old_blog.content = request.POST.get("content")
-    print(request.FILES.get('imgfile')==None)
     if request.FILES.get('imgfile'):
         old_blog.image = request.FILES.get('imgfile')
     old_blog.save()
